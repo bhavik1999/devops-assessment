@@ -21,7 +21,8 @@ spec:
     spec:
       containers:
         - name: sample-api
-          image: YOUR_DOCKERHUB_USERNAME/sample-api:latest
+          image: sample-api:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
           env:
