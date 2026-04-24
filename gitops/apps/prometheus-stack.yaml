@@ -1,3 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  hostPath:
+    path: /persistentvolume/prometheus
+---
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -38,8 +52,6 @@ spec:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
             podMonitorSelectorNilUsesHelmValues: false
-          persistence:
-            enabled: false
             resources:
               requests:
                 memory: 256Mi
@@ -47,6 +59,14 @@ spec:
               limits:
                 memory: 512Mi
                 cpu: 200m
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 3Gi
+                  storageClassName: local-path
         alertmanager:
           enabled: false
   destination:
