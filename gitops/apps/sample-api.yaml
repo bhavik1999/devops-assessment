@@ -1,19 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps
+  name: sample-api
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/bhavik1999/devops-assessment.git
+    repoURL: https://github.com/YOUR_USERNAME/devops-assessment.git
     targetRevision: HEAD
-    path: gitops/apps
+    path: sample-api/k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: sample-api
   syncPolicy:
     automated:
       prune: true
