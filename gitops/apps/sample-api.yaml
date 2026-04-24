@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/devops-assessment.git
+    repoURL: https://github.com/bhavik1999/devops-assessment.git
     targetRevision: HEAD
     path: sample-api/k8s
   destination:
