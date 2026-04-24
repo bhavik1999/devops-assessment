@@ -38,6 +38,7 @@ spec:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
             podMonitorSelectorNilUsesHelmValues: false
+            storageSpec: {}
         alertmanager:
           enabled: false
   destination:
