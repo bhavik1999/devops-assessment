@@ -88,20 +88,7 @@ git clone https://github.com/bhavik1999/devops-assessment.git
 cd devops-assessment
 
 # 2. Install k3s
-./bootstrap/01-install-k3s.sh
-
-# 3. Install ArgoCD (waits for all pods to be ready)
-./bootstrap/02-install-argocd.sh
-
-# 4. Build and import the sample API image into k3s
-docker build -t sample-api:latest ./sample-api/
-docker save sample-api:latest | sudo k3s ctr images import -
-
-# 5. Wait ~10 minutes for all ArgoCD apps to sync and pods to start
-watch kubectl get pods -A
-
-# 6. Generate live traffic to populate dashboards
-./bootstrap/03-simulate-traffic.sh 120
+./bootstrap/bootstrap.sh
 ```
 
 ---
