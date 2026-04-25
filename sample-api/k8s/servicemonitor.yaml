@@ -2,10 +2,13 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: sample-api
-  namespace: sample-api
+  namespace: observability
   labels:
     release: prometheus-stack
 spec:
+  namespaceSelector:
+    matchNames:
+      - sample-api
   selector:
     matchLabels:
       app: sample-api
